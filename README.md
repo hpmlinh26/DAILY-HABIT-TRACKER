@@ -1,67 +1,70 @@
-# 🎯 Habit Tracker with Streaks (Streamlit)
+# Daily Habit Tracker — Gamified (Streamlit + Pandas)
 
-A beautiful, motivating, and interactive web application to **track daily habits** and **build powerful completion streaks**. Built with Python and Streamlit, this app helps users maintain consistency and track progress toward long-term goals.
-
----
-
-## ✨ Features
-
-* **Custom Habit Creation:** Easily add new habits with custom names, target days (goals), and categories (Health, Learning, Fitness, etc.).
-* **Dynamic Streak Counter:** The application dynamically calculates and displays the current **streak** (consecutive days completed) with motivational indicators (e.g., 🔥).
-* **7-Day Visual Calendar:** Each habit card includes a clear visual calendar showing completion status for the last seven days, making consistency easy to spot.
-* **Progress Tracking:** Displays a progress bar indicating how close the user is to their long-term **target day goals**.
-* **Statistics Dashboard:** A header dashboard summarizes total ongoing streaks, habits completed today, and the number of active habits.
-* **Persistence:** All habit data (including streaks and completed dates) is managed using **Streamlit Session State** for the duration of the session.
+Ứng dụng web theo dõi thói quen hằng ngày theo hướng **game hóa** (streak, level, rương thưởng, boss tuần). Dự án ưu tiên **xử lý dữ liệu và trực quan hóa** bằng **Pandas / NumPy / Matplotlib**, đồng thời dùng **Streamlit** để tạo giao diện web tương tác nhanh, dễ triển khai.
 
 ---
 
-## 💻 Tech Stack
-
-| Component | Technology | Purpose |
-| :--- | :--- | :--- |
-| **Frontend/App Framework** | **Streamlit** (Python) | Creates the interactive, data-driven web interface. |
-| **State Management** | **Streamlit Session State** | Persists habit data, streaks, and the calendar state across interactions. |
-| **Date & Time** | `datetime` (Python Standard Library) | Crucial for calculating streaks and managing the 7-day calendar view. |
+## Tổng quan
+Ứng dụng biến việc duy trì thói quen thành các **nhiệm vụ (quests)**. Mỗi người dùng khi tạo mới sẽ được gán một bộ **thói quen cố định** (có thể cấu hình trong code), sau đó thực hiện check-in mỗi ngày. Hệ thống tự động tính điểm, thưởng theo streak và phát thưởng thông qua rương hằng ngày/tuần. Toàn bộ dữ liệu được lưu dạng **CSV** để đơn giản, dễ kiểm tra và thuận tiện cho báo cáo học thuật.
 
 ---
 
-## 🚀 How to Run Locally
+## Tính năng chính
+- **Nhiệm vụ cố định (Fixed Quests/Habits)**
+  - User mới tự động có bộ nhiệm vụ được định nghĩa sẵn.
+  - Có thể **bật/tắt** nhiệm vụ (active) để phù hợp lịch cá nhân (tuỳ chọn: chỉnh điểm).
 
-### Prerequisites
-Ensure you have **Python 3.8+** installed.
+- **Check-in hằng ngày**
+  - Đánh dấu từng nhiệm vụ theo ngày: **Completed / Missed**
+  - Có thể ghi chú đi kèm.
 
-### Installation Steps
-1.  **Clone the repository:**
-    ```bash
-    git clone [YOUR_REPOSITORY_URL]
-    cd [Your-Repository-Name]
-    ```
-2.  **Install dependencies** using the `requirements.txt` file:
-    ```bash
-    pip install -r requirements.txt
-    ```
-3.  **Run the Streamlit application:**
-    ```bash
-    streamlit run main.py
-    ```
+- **Streak (chuỗi ngày liên tiếp)**
+  - Tính streak cho các nhiệm vụ Daily.
+  - Thưởng **milestone bonus** theo các mốc streak cấu hình (3/7/14/22/30…).
+
+- **Daily Chest 🎁**
+  - Hoàn thành **tất cả nhiệm vụ Daily đang active** trong ngày → mở rương.
+  - Rương phát **loot ngẫu nhiên** theo trọng số (rarity) + điểm thưởng.
+
+- **Weekly Boss 🐉**
+  - Mỗi lần hoàn thành Daily sẽ cộng “damage” trong tuần.
+  - Đạt ngưỡng mục tiêu → hạ boss và mở **Boss Chest** (loot “xịn” hơn).
+  - Boss chest chỉ mở **1 lần/tuần**.
+
+- **Kho đồ (Inventory)**
+  - Tổng hợp vật phẩm đã nhận theo loại và độ hiếm.
+
+- **Biểu đồ thống kê**
+  - Vẽ biểu đồ **điểm theo ngày** trong 30 ngày gần nhất (bao gồm điểm loot) bằng Matplotlib.
+
+- **Leaderboard (toàn hệ thống)**
+  - Bảng xếp hạng nhiều user theo tổng điểm.
+  - Ẩn mặc định, chỉ hiện khi bật trong sidebar.
 
 ---
 
-## 📤 Next Step: Uploading to GitHub
+## Công nghệ sử dụng
+- **Python**
+- **Streamlit** — giao diện web tương tác
+- **Pandas / NumPy** — mô hình dữ liệu, xử lý log, tính điểm/streak/quest
+- **Matplotlib** — biểu đồ và trực quan hóa
 
-If you haven't pushed your files yet, use the following commands in your project's terminal:
+---
 
-1.  **Stage all files (`main.py`, `requirements.txt`, `README.md`):**
-    ```bash
-    git add .
-    ```
-2.  **Commit your changes:**
-    ```bash
-    git commit -m "Feat: Habit Tracker with streak calculation and dashboard."
-    ```
-3.  **Push to your GitHub repository:**
-    ```bash
-    git push
-    ```
+## Lưu trữ dữ liệu (CSV)
+Trạng thái ứng dụng được lưu trong thư mục `./data/`:
+- `users.csv` — thông tin người dùng
+- `habits.csv` — danh sách nhiệm vụ cố định theo user (kèm active/points)
+- `logs.csv` — lịch sử check-in theo ngày
+- `rewards.csv` — lịch sử mở rương (daily/boss), loot và điểm thưởng
 
-Would you like to move on to the next project idea, or do you have any other questions about the Habit Tracker?
+> Lưu CSV giúp hệ thống **dễ đọc – dễ debug – dễ trình bày** khi làm báo cáo.
+
+---
+
+## Hướng dẫn chạy
+
+### 1) Chạy local (máy cá nhân)
+Cài thư viện:
+```bash
+pip install streamlit pandas numpy matplotlib
