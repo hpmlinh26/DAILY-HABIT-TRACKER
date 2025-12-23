@@ -63,9 +63,4 @@ Dữ liệu được lưu trong thư mục `data/`:
 > Lưu bằng CSV giúp dễ đọc, dễ debug, dễ nộp bài/đính kèm báo cáo.
 
 ---
-
-## 4) Hướng dẫn chạy trên máy local
-
-### Bước 1: Cài thư viện
-```bash
-pip install streamlit pandas numpy matplotlib
+ 
