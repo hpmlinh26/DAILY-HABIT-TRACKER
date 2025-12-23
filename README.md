@@ -14,14 +14,14 @@ Mỗi user được gán sẵn bộ quest:
 - Sleep >= 7 hours  
 - Wake up <= 07:00  
 
-Bạn có thể **bật/tắt quest** và **chỉnh điểm** ở trang **Manage → Quests**.
+Bạn có thể bật/tắt quest và chỉnh điểm ở trang **Manage → Quests**.
 
 ### ✅ Check-in hằng ngày (Today)
 - Chọn ngày, tick **Done/Missed** cho từng quest
 - Ghi chú (note) theo từng quest
 
 ### 🎁 Daily Chest (Rương hằng ngày)
-Nếu bạn **hoàn thành tất cả Daily quests trong ngày**, bạn được mở **Daily Chest** để nhận:
+Nếu bạn hoàn thành tất cả Daily quests trong ngày, bạn được mở **Daily Chest** để nhận:
 - điểm thưởng cố định + loot ngẫu nhiên (Coin/Gem/Badge…)
 
 ### 🐉 Weekly Boss + Boss Chest
@@ -29,7 +29,7 @@ Nếu bạn **hoàn thành tất cả Daily quests trong ngày**, bạn được
 - Đủ damage trong tuần sẽ được mở **Boss Chest** (phần thưởng lớn hơn)
 
 ### 🔥 Streak Bonus
-Tự tính thưởng theo mốc streak: **3/7/14/22/30 ngày** (dựa trên Completed liên tiếp).
+Tự tính thưởng theo mốc streak: 3/7/14/22/30 ngày (dựa trên Completed liên tiếp).
 
 ### 🗓️ Lịch 30 ngày (Calendar)
 Lịch 30 ngày hiển thị mức độ hoàn thành daily quest theo màu (emoji):
