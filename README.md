@@ -1,6 +1,6 @@
-# Daily Habit Tracker — Game Mode (Streamlit)
+# Design and Evaluation of a Gamified Behavior Change Support System for Daily Habit Formation
 
-Ứng dụng **Daily Habit Tracker & Gamify** viết bằng **Python + Streamlit** (ưu tiên Pandas/Numpy/Matplotlib), giúp người dùng theo dõi thói quen theo ngày theo kiểu “nhiệm vụ trong game”: hoàn thành quest, nhận thưởng, lên level và có bảng xếp hạng.
+Ứng dụng **Daily Habit Tracker & Gamify**, giúp người dùng theo dõi thói quen theo ngày theo kiểu “nhiệm vụ trong game”: hoàn thành quest, nhận thưởng, lên level và có bảng xếp hạng.
 
 ---
 
