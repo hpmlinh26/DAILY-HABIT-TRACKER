@@ -1,66 +1,50 @@
 # Design and Evaluation of a Gamified Behavior Change Support System for Daily Habit Formation
 
-Ứng dụng **Daily Habit Tracker & Gamify**, giúp người dùng theo dõi thói quen theo ngày theo kiểu “nhiệm vụ trong game”: hoàn thành quest, nhận thưởng, lên level và có bảng xếp hạng.
-
+Ứng dụng **Daily Habit Tracker & Gamify**, là một hệ thống hỗ trợ người dùng xây dựng và duy trì thói quen hằng ngày thông qua các cơ chế trò chơi hóa (Gamification).
+Hệ thống giúp biến các thói quen khô khan thành trải nghiệm trực quan, có động lực và mang tính cạnh tranh lành mạnh.
 ---
 
 ## 1) Tính năng chính
 
-### ✅ Fixed Quests (Nhiệm vụ cố định)
-Mỗi user được gán sẵn bộ quest:
-- Steps >= 8000  
-- Water >= 2000 ml  
-- Study >= 1 hour  
-- Sleep >= 7 hours  
-- Wake up <= 07:00  
+**Mục tiêu của đề tài**
 
-Bạn có thể bật/tắt quest và chỉnh điểm ở trang **Manage → Quests**.
+- Hỗ trợ người dùng hình thành thói quen tích cực
+- Tăng mức độ duy trì thói quen thông qua Gamification
+- Trực quan hóa dữ liệu tiến trình cá nhân
+- Tạo môi trường cạnh tranh và tương tác cộng đồng
+  
+## 2) Các chức năng chính
 
-### ✅ Check-in hằng ngày (Today)
-- Chọn ngày, tick **Done/Missed** cho từng quest
-- Ghi chú (note) theo từng quest
+**2.1. Hệ thống tính điểm (Point System)**
 
-### 🎁 Daily Chest (Rương hằng ngày)
-Nếu bạn hoàn thành tất cả Daily quests trong ngày, bạn được mở **Daily Chest** để nhận:
-- điểm thưởng cố định + loot ngẫu nhiên (Coin/Gem/Badge…)
+- Hệ thống tính điểm (Point System)
+- Điểm nhiệm vụ (Task Point)
+- Điểm chuỗi ngày liên tiếp (Streak)
+- Điểm thưởng từ rương quà (Reward Chest)
+- Tổng điểm dùng để xác định cấp độ (Level)
 
-### 🐉 Weekly Boss + Boss Chest
-- Mỗi lần hoàn thành daily quest sẽ gây “damage”
-- Đủ damage trong tuần sẽ được mở **Boss Chest** (phần thưởng lớn hơn)
+**2.2. Gamification**
 
-### 🔥 Streak Bonus
-Tự tính thưởng theo mốc streak: 3/7/14/22/30 ngày (dựa trên Completed liên tiếp).
+- Hệ thống Level dựa trên tổng điểm tích lũy
+- Cơ chế Boss:
+ + Biến thói quen thành các “trận chiến”
+ + Tăng tính giải trí và động lực cho người dùng
 
-### 🗓️ Lịch 30 ngày (Calendar)
-Lịch 30 ngày hiển thị mức độ hoàn thành daily quest theo màu (emoji):
-- ⬜ 0%
-- 🟥 thấp
-- 🟧 trung bình
-- 🟨 gần đủ
-- 🟩 100%
+**2.3. Trực quan hóa dữ liệu**
 
-### 🏆 Leaderboard (tuỳ chọn)
-Bảng xếp hạng toàn hệ thống theo tổng điểm.
-Người dùng chỉ thấy khi tick “Hiện Leaderboard”.
+- Biểu đồ đường theo dõi biến động điểm số trong 30 ngày (Matplotlib)
+- Calendar Heatmap: Đánh giá mức độ kỷ luật thông qua màu sắc theo ngày
 
----
+**2.4. Tính năng cộng đồng**
 
-## 2) Công nghệ sử dụng
-- **Streamlit**: tạo web UI nhanh
-- **Pandas**: quản lý dữ liệu dạng bảng (users/habits/logs/rewards)
-- **NumPy**: random loot, xử lý mảng
-- **Matplotlib**: vẽ biểu đồ điểm theo ngày
+- Leaderboard thời gian thực
+- So sánh thành tích giữa các người dùng trong hệ thống
 
----
+## 3. Công nghệ sử dụng
 
-## 3) Cấu trúc dữ liệu (CSV)
-Dữ liệu được lưu trong thư mục `data/`:
-- `users.csv`: danh sách người dùng
-- `habits.csv`: danh sách quest/habit theo user
-- `logs.csv`: lịch sử check-in theo ngày
-- `rewards.csv`: lịch sử mở rương (daily/boss)
+- Ngôn ngữ: Python
+- Framework: Streamlit
+- Thư viện trực quan: Matplotlib
+- Lưu trữ dữ liệu: CSV
+- Triển khai thử nghiệm: Google Colab + Cloudflared
 
-> Lưu bằng CSV giúp dễ đọc, dễ debug, dễ nộp bài/đính kèm báo cáo.
-
----
- 
